@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zade Alüminyum Giyotin Cam Sistemleri</title>
+    <script>
+        // SUPER AGGRESSIVE TITLE MANAGEMENT
+        (function() {
+            console.log('SCRIPT STARTED');
+            
+            // Get saved language
+            const savedLang = localStorage.getItem('selectedLanguage');
+            console.log('SAVED LANGUAGE:', savedLang);
+            
+            // Title mapping
+            const titles = {
+                'tr': 'Zade Alüminyum Giyotin Cam Sistemleri',
+                'en': 'Zade Aluminium',
+                'fr': 'Zade Aluminium',
+                'de': 'Zade Aluminium',
+                'es': 'Zade Aluminio',
+                'it': 'Zade Alluminio',
+                'nl': 'Zade Aluminium',
+                'pl': 'Zade Aluminium',
+                'pt': 'Zade Alumínio',
+                'ro': 'Zade Aluminiu',
+                'cs': 'Zade Hliník',
+                'fi': 'Zade Alumiini',
+                'lt': 'Zade Aliuminis',
+                'lu': 'Zade Aluminium',
+                'rs': 'Zade Aluminijum',
+                'se': 'Zade Aluminium',
+                'ch': 'Zade Aluminium',
+                'ua': 'Zade Алюмінієві',
+                'cn': 'Zade 铝制',
+                'hu': 'Zade Alumínium',
+                'ar': 'Zade ألمنيوم'
+            };
+            
+            // Set title function
+            function setTitle() {
+                if (savedLang && titles[savedLang]) {
+                    document.title = titles[savedLang];
+                    console.log('TITLE SET TO:', titles[savedLang]);
+                }
+            }
+            
+            // Set immediately
+            setTitle();
+            
+            // Set on DOM ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', setTitle);
+            }
+            
+            // Set on load
+            window.addEventListener('load', setTitle);
+            
+            // Force set every 50ms for 10 seconds
+            let count = 0;
+            const interval = setInterval(() => {
+                setTitle();
+                count++;
+                if (count >= 200) {
+                    clearInterval(interval);
+                    console.log('STOPPED FORCING TITLE');
+                }
+            }, 50);
+            
+            // Language selector
+            function changeLanguage(lang) {
+                localStorage.setItem('selectedLanguage', lang);
+                location.reload();
+            }
+        })();
+    </script>
+</head>
+<body>
+    <h1>Title Test Page</h1>
+    <p>Current title: <span id="currentTitle"></span></p>
+    <p>Saved language: <span id="savedLang"></span></p>
+    
+    <div style="margin: 20px 0;">
+        <button onclick="changeLanguage('en')">English</button>
+        <button onclick="changeLanguage('fr')">French</button>
+        <button onclick="changeLanguage('de')">German</button>
+        <button onclick="changeLanguage('tr')">Turkish</button>
+    </div>
+    
+    <script>
+        // Update display
+        setInterval(() => {
+            document.getElementById('currentTitle').textContent = document.title;
+            document.getElementById('savedLang').textContent = localStorage.getItem('selectedLanguage') || 'none';
+        }, 100);
+    </script>
+</body>
+</html> 

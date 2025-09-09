@@ -1,0 +1,39 @@
+<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="zGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#3B82F6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#1E3A8A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Glass pane 1 (background) -->
+  <rect x="8" y="12" width="24" height="36" rx="2" 
+        fill="rgba(59, 130, 246, 0.1)" 
+        stroke="rgba(59, 130, 246, 0.3)" 
+        stroke-width="1" 
+        transform="rotate(-5 20 30)"/>
+  
+  <!-- Glass pane 2 (overlapping) -->
+  <rect x="28" y="8" width="24" height="36" rx="2" 
+        fill="rgba(59, 130, 246, 0.1)" 
+        stroke="rgba(59, 130, 246, 0.3)" 
+        stroke-width="1" 
+        transform="rotate(8 40 26)"/>
+  
+  <!-- Stylized Z -->
+  <path d="M12 15 L28 15 L12 45 L28 45" 
+        stroke="url(#zGradient)" 
+        stroke-width="4" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none"/>
+  
+  <!-- Additional Z stroke for thickness -->
+  <path d="M12 15 L28 15 L12 45 L28 45" 
+        stroke="url(#zGradient)" 
+        stroke-width="2" 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        fill="none" 
+        opacity="0.7"/>
+</svg> 

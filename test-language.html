@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Language Test - Zade Alüminyum</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .test-section { margin: 20px 0; padding: 20px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; margin: 5px; cursor: pointer; }
+        .current-title { background: #f0f0f0; padding: 10px; margin: 10px 0; }
+    </style>
+</head>
+<body>
+    <h1>Language Persistence Test</h1>
+    
+    <div class="test-section">
+        <h2>Current Page Title</h2>
+        <div class="current-title" id="currentTitle"></div>
+        <button onclick="updateTitleDisplay()">Refresh Title Display</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Language Selection</h2>
+        <button onclick="setLanguage('tr')">Turkish</button>
+        <button onclick="setLanguage('en')">English</button>
+        <button onclick="setLanguage('fr')">French</button>
+        <button onclick="setLanguage('de')">German</button>
+        <button onclick="setLanguage('es')">Spanish</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Test Actions</h2>
+        <button onclick="forceUpdateTitle()">Force Update Title</button>
+        <button onclick="clearStorage()">Clear localStorage</button>
+        <button onclick="showStorage()">Show localStorage</button>
+        <button onclick="location.reload()">Reload Page</button>
+    </div>
+
+    <div class="test-section">
+        <h2>Debug Info</h2>
+        <div id="debugInfo"></div>
+    </div>
+
+    <script>
+        const translations = {
+            'tr': 'Zade Alüminyum Giyotin Cam Sistemleri',
+            'en': 'Zade Aluminium Guillotine Glass Systems',
+            'fr': 'Zade Aluminium Systèmes de Verre Guillotine',
+            'de': 'Zade Aluminium Guillotine-Glassysteme',
+            'es': 'Zade Aluminio Sistemas de Vidrio Guillotina'
+        };
+
+        function setLanguage(lang) {
+            localStorage.setItem('selectedLanguage', lang);
+            document.title = translations[lang];
+            updateTitleDisplay();
+            updateDebugInfo();
+            console.log('Language set to:', lang);
+        }
+
+        function forceUpdateTitle() {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang && translations[savedLang]) {
+                document.title = translations[savedLang];
+                updateTitleDisplay();
+                console.log('Title forced to:', translations[savedLang]);
+            }
+        }
+
+        function clearStorage() {
+            localStorage.clear();
+            updateDebugInfo();
+            console.log('localStorage cleared');
+        }
+
+        function showStorage() {
+            updateDebugInfo();
+        }
+
+        function updateTitleDisplay() {
+            document.getElementById('currentTitle').textContent = document.title;
+        }
+
+        function updateDebugInfo() {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            const info = `
+                <p><strong>Saved Language:</strong> ${savedLang || 'None'}</p>
+                <p><strong>Current Title:</strong> ${document.title}</p>
+                <p><strong>Expected Title:</strong> ${savedLang && translations[savedLang] ? translations[savedLang] : 'None'}</p>
+                <p><strong>localStorage Content:</strong></p>
+                <pre>${JSON.stringify(localStorage, null, 2)}</pre>
+            `;
+            document.getElementById('debugInfo').innerHTML = info;
+        }
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang && translations[savedLang]) {
+                document.title = translations[savedLang];
+            }
+            updateTitleDisplay();
+            updateDebugInfo();
+        });
+
+        // Update on window load
+        window.addEventListener('load', () => {
+            const savedLang = localStorage.getItem('selectedLanguage');
+            if (savedLang && translations[savedLang]) {
+                document.title = translations[savedLang];
+            }
+            updateTitleDisplay();
+            updateDebugInfo();
+        });
+    </script>
+</body>
+</html> 
