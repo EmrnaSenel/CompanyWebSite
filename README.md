@@ -92,4 +92,4 @@ The main brand colors are defined in CSS variables:
 
 ## License
 
-This project is proprietary to Zade Alüminyum. 
+This project is proprietary to Zade Alüminyum. # CompanyWebSite
