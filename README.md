@@ -86,10 +86,10 @@ The main brand colors are defined in CSS variables:
 
 ## Contact Information
 
-- **Email**: info@zadealuminyumtasarim.com.tr
-- **Phone**: +90 (535) 508 10 44
-- **Address**: Mustafa Kemal, 3080. Sk. No:10, 34707 Ataşehir/İstanbul
+- **Email**: emrinasenel@hotmail.com
+- **Phone**: +90 (541) 800 67 18
+
 
 ## License
 
-This project is proprietary to Zade Alüminyum. # CompanyWebSite
+Made by Emrina ŞENEL #CompanyWebSite
